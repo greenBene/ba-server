@@ -51,10 +51,12 @@ app.post("/post", function(req, res){
   var sql = "INSERT INTO accuracy VALUES (0, current_timestamp(), '" + model +  "', '" + os + "', " + timeSinceParking +  ", " + accuracy +  ");"
 
   con.query(sql, function (err, res) {
-    if (err) throw err;
-    console.log("Added test record");
-    });
+    if (err){
+      console.log(err);
+      res.sendStatus(500);
+    }
 
+    });
 
   res.sendStatus(200)
 });
@@ -62,21 +64,3 @@ app.post("/post", function(req, res){
 app.get("/", (req, res) => res.send("I'm alive!"));
 
 app.listen(8080)
-
-
-
-
-
-/*
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Hello World!');
-
-  var sql = "INSERT INTO accuracy VALUES (0, current_timestamp(), 'test', 'test', 0, 0)"
-
-  con.query(sql, function (err, res) {
-    if (err) throw err;
-    console.log("Added test record");
-    });
-}).listen(8080);
-*/
