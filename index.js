@@ -19,14 +19,6 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-/*app.use(express.json({
-  extended: true,
-  inflate: true,
-  limit: '100kb',
-  parameterLimit: 1000,
-  type: 'application/json',
-  verify: undefined
-}))*/
 app.use(parser.urlencoded({ extended: true })); // support encoded bodies
 
 
@@ -41,9 +33,6 @@ app.post("/post", function(req, res){
   var test = body.test;
 
   console.log("Received message");
-
-  console.log(model);
-
 
   if(model === undefined
     || os === undefined
