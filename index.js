@@ -48,7 +48,7 @@ app.post("/post", function(req, res){
     return;
   }
 
-  var sql = "INSERT INTO accuracy VALUES (0, current_timestamp(), \'" + model "    "  ', 'test', 0, 0)"
+  var sql = "INSERT INTO accuracy VALUES (0, current_timestamp(), '" + model +  "', '" + os + "', " + timeSinceParking +  ", " + accuracy +  ");"
 
   con.query(sql, function (err, res) {
     if (err) throw err;
